@@ -1,0 +1,23 @@
+<div class="form">
+  <h1>New concert</h1>
+  <form action="/concerts" method="post">
+    <div class="form-group">
+      <label>Artist</label><br>
+      <input class="form-control" list="artists" name="artist[name]" required placeholder="Artist Name">
+      <datalist id="artists">
+        <%current_user.artists.each do |artist|%>
+          <option value="<%=artist.name%>"><%=artist.name%></option>
+        <%end%>
+      </datalist>
+      <label>Location</label>
+      <input type="text" class="form-control" name="location" required placeholder="Anytown, USA"><br>
+      <label>Date</label>
+      <input type="date" class="form-control" name="concert_date" required><br>
+      <label>Ticket Price</label>
+      <input type="number" class="form-control" name="ticket_price" required><br>
+      <label>Description</label>
+      <textarea type="email" class="form-control" name="description" placeholder="Your concert description here (optional)" rows="6"></textarea><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

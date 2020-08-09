@@ -1,0 +1,14 @@
+<div class="concert-list">
+  <h2>Upcoming Concerts</h2>
+    <% @concerts.sort_by {|x| x.concert_date }.each do |concert| %>
+      <% if concert.concert_date >= Date.today%>
+        <p class="concert-info"><%= "#{concert.concert_date.strftime("%m/%d/%Y")} - #{concert.artist.name} - #{concert.location} - "%><a href="/concerts/<%=concert.id%>">See details</a></p>
+      <% end %>
+    <% end %>
+  <h2>Past Concerts</h2>
+  <% @concerts.all.sort_by {|x| x.concert_date }.each do |concert| %>
+    <% if concert.concert_date < Date.today %>
+      <p class="concert-info"><%= "#{concert.concert_date.strftime("%m/%d/%Y")} - #{concert.artist.name} - #{concert.location} - "%><a href="/concerts/<%=concert.id%>">See details</a></p>
+    <% end %>
+  <% end %>
+</div>

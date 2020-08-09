@@ -1,0 +1,29 @@
+<div class="form">
+  <h1>Edit concert</h1>
+  <form action="/concerts/<%=@concert.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label>Artist</label><br>
+      <input class="form-control" list="artists" name="artist[name]" value="<%=@concert.artist.name%>">
+      <datalist id="artists">
+        <%current_user.artists.each do |artist|%>
+          <option value="<%=artist.name%>"><%=artist.name%></option>
+        <%end%>
+      </datalist>
+      <label>Location</label>
+      <input type="text" class="form-control" name="location" required value="<%=@concert.location%>"><br>
+      <label>Date</label>
+      <input type="date" class="form-control" name="concert_date" required value="<%=@concert.concert_date.strftime("%Y-%m-%d")%>"><br>
+      <label>Ticket Price</label>
+      <input type="number" class="form-control" name="ticket_price" required value="<%=@concert.ticket_price.to_i%>"><br>
+      <label>Description</label>
+      <textarea type="text" class="form-control" name="description" rows="6"><%=@concert.description%></textarea><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <p><form action="/concerts/<%=@concert.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Concert">
+  </form></p>
+</div>

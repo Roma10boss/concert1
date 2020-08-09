@@ -1,0 +1,16 @@
+<div class="concert">
+  <h1>Concert Detail</h1>
+  <p><b>Date:</b> <%= @concert.concert_date.strftime("%m/%d/%Y") %></p>
+  <p><b>Artist:</b> <a href="/artists/<%= @concert.artist.slug %>"><%= @concert.artist.name %></a></p>
+  <p><b>Location:</b> <%= @concert.location %></p>
+  <p><b>Ticket Price:</b> <%= "$#{sprintf("%1.2f", @concert.ticket_price)}" %></p>
+  <p class="concert-description"><b>Description:</b> <%= @concert.description %></p>
+  <% if logged_in? && current_user.concerts.include?(@concert)%>
+    <p><a href="/users/<%=current_user.id%>">Your account</a></p>
+    <p><a href="/concerts/<%= @concert.id %>/edit">Edit</a></p>
+    <p><form action="/concerts/<%=@concert.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Concert">
+    </form></p>
+  <% end %>
+</div>
