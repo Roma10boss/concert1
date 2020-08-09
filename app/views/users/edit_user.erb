@@ -1,5 +1,5 @@
 <div class="user form">
-  <h1>Edit your account</h1>
+  <h1>Edit your profile</h1>
   <div>
     <form action="/users/<%=@user.id%>" method="post">
       <input type="hidden" name="_method" value="patch">
@@ -13,7 +13,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-  <p><a href="/users/<%=@user.id%>">Back to your account</a></p>
+  <p><a href="/users/<%=@user.id%>">Back to your profile</a></p>
   <p><form action="/users/<%=@user.id%>" method="post">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Account">

@@ -2,7 +2,7 @@
   <h1>Your Account</h1>
   <p>Username: <%= @user.username %></p>
   <p>Email: <%= @user.email %></p>
-  <p><a href="/users/<%=@user.id%>/edit">Edit your account</a></p>
+  <p><a href="/users/<%=@user.id%>/edit">Edit your profile</a></p>
 
   <h2>Your Artists</h2>
   <% @user.artists.each do |artist| %>
