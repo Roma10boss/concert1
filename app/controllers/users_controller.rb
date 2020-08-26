@@ -1,3 +1,4 @@
+require "pry"
 class UsersController < ApplicationController
   get '/signup' do
     if logged_in?
@@ -16,8 +17,9 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    @user = User.find_by(username: params[:username].strip, password: params[:password].strip)
-    if !@user.nil?
+    @user = User.find_by(username: params[:username].strip)#, password: params[:password].strip)
+  #binding.pry
+    if !@user.nil? && @user.authenticate(params[:password])
      session[:user_id] = @user.id
      redirect to '/'
     else
